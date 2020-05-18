@@ -1,21 +1,85 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
+// import Img from "gatsby-image"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+
+    <div className="latest">
+      <h1 className="page-title-desc">Insights</h1>
+
+      <div className="article">
+        <div className="latest">
+          {data.allWordpressPost.edges.map(post => (
+            <Link to={`/post/${post.node.slug}`}>
+              <div className="post">
+                <div className="post-meta">
+                  <div className="input-class post-title">
+                    <div className="post-author">
+                      {/* {post._embedded.author[0].name} */}
+                    </div>
+                    <div className="post-time-date">{post.node.date}</div>
+
+                    <div style={{ width: "75%" }}>
+                      <h3
+                        dangerouslySetInnerHTML={{ __html: post.node.title }}
+                        style={{ marginBottom: 0 }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="post-content"
+                  dangerouslySetInnerHTML={{ __html: post.node.excerpt }}
+                />
+
+                <div className="post-image">
+                  {/* <img
+                  src={
+                    post.node.featured_media.localFile.childImageSharp.sizes
+                      .originalImg
+                  }
+                  alt={post.node.title}
+                  style={{ width: "25%", marginRight: 20 }}
+                /> */}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 )
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    allWordpressPost {
+      edges {
+        node {
+          title
+          excerpt
+          slug
+          date(formatString: "MMMM DD, YYYY")
+
+          featured_media {
+            localFile {
+              childImageSharp {
+                sizes {
+                  originalImg
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

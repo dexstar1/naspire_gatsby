@@ -5,18 +5,30 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "cheeseburger-menu": "0.0.13",
     "gatsby": "^2.21.22",
     "gatsby-image": "^2.4.3",
     "gatsby-plugin-manifest": "^2.4.2",
     "gatsby-plugin-offline": "^3.2.1",
     "gatsby-plugin-react-helmet": "^3.3.1",
-    "gatsby-plugin-sharp": "^2.6.2",
+    "gatsby-plugin-sass": "^2.3.1",
+    "gatsby-plugin-sharp": "^2.6.3",
+    "gatsby-plugin-sitemap": "^2.4.2",
     "gatsby-source-filesystem": "^2.3.1",
+    "gatsby-source-wordpress": "^3.3.3",
     "gatsby-transformer-sharp": "^2.5.2",
+    "lato-font": "^3.0.0",
+    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+    "react-hamburger-menu": "^1.2.1",
+    "react-helmet": "^6.0.0",
+    "react-icons": "^3.10.0",
+    "typeface-bree-serif": "0.0.20"
   },
   "devDependencies": {
     "prettier": "2.0.5"
